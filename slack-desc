@@ -1,0 +1,11 @@
+icu: ICU (International Components for Unicode)
+icu:
+icu: ICU is a mature, widely used set of C/C++ and Java libraries providing
+icu: Unicode and Globalization support for software applications. ICU is
+icu: widely portable and gives applications the same results on all
+icu: platforms and between C/C++ and Java software.
+icu:
+icu:
+icu:
+icu: Packaged by Georgi D. Sotirov <gdsotirov@dir.bg>
+icu:
