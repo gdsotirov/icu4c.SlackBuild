@@ -7,9 +7,9 @@
 . ../slack-package.conf
 
 NAME=icu
-VERSION=3.8
+VERSION=3.8.1
 VERSTR=${VERSION//./_}
-BUILD=2
+BUILD=1
 
 TMP=${TMP:-/tmp}
 CWD=${CWD:-`cwd`}
