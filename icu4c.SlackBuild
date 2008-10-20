@@ -7,7 +7,7 @@
 . ../slack-package.conf
 
 NAME=icu
-VERSION=3.8.1
+VERSION=4.0
 VERSTR=${VERSION//./_}
 BUILD=1
 
@@ -29,16 +29,23 @@ CXXFLAGS=$SLKCFLAGS \
             --mandir=/usr/man \
             --enable-shared=yes \
             --enable-static=no \
-            --with-data-packaging=files \
+            --enable-release \
+            --enable-draft \
+            --enable-threads \
+            --enable-extras \
+            --enable-icuio \
+            --enable-layout \
+            --enable-tests=no \
+            --enable-samples=no \
             --disable-rpath \
-            --without-samples
+            --with-data-packaging=files || exit 1
 
-make || exit 1
+make -j4 || exit 2
 
 PKG="$TMP/package-$NAME"
 mkdir -p $PKG
 
-make DESTDIR=$PKG install
+make DESTDIR=$PKG install || exit 3
 
 bin_perms $PKG
 sbin_perms $PKG
@@ -51,11 +58,13 @@ DOCFILES="$DOCFILES license.html readme.html unicode-license.txt"
 gzip_man $PKG
 
 mkdir -p $PKG/install
-install -m 644 $CWD/slack-desc     $PKG/install
+install -m 644 $CWD/slack-desc     $PKG/install/slack-desc
+install -m 644 $CWD/slack-required $PKG/install/slack-required
 
 mkdir -p $PKG/usr/src/slackbuilds/$NAME-$VERSION
-install -m 644 $CWD/slack-desc       $PKG/usr/src/slackbuilds/$NAME-$VERSION
-install -m 644 $CWD/$NAME.SlackBuild $PKG/usr/src/slackbuilds/$NAME-$VERSION
+install -m 644 $CWD/slack-desc       $PKG/usr/src/slackbuilds/$NAME-$VERSION/slack-desc
+install -m 644 $CWD/slack-required   $PKG/usr/src/slackbuilds/$NAME-$VERSION/slack-required
+install -m 644 $CWD/$NAME.SlackBuild $PKG/usr/src/slackbuilds/$NAME-$VERSION/$NAME.SlackBuild
 
 cd $PKG
 PKGNAME=$NAME-$VERSION-$ARCH-$BUILD$MYIN
