@@ -1,15 +1,33 @@
 #!/bin/sh
 #
-# SlackBuild for ICU
-# Written by Georgi D. Sotirov <gdsotirov@dir.bg>
+# Slackware build script for ICU
+# Copyright (C) 2007-2011 Georgi D. Sotirov <gdsotirov@dir.bg>
+#
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+# 
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+#
+# Visit SlackPack at http://sotirov-bg.net/slackpack/
+#
+# $Id: icu4c.SlackBuild,v 1.7 2011/10/15 21:34:34 gsotirov Exp $
 #
 
 . ../slack-package.conf
 
 NAME=icu
-VERSION=4.4.1
+VERSION=4.4.2
 VERSTR=${VERSION//./_}
-BUILD=1
+BUILD=${BUILD:-1}
 
 TMP=${TMP:-/tmp}
 CWD=${CWD:-`pwd`}
@@ -33,7 +51,7 @@ mkdir -p $PKG
 
 # Extract the source
 cd $TMP
-tar -xvf $CWD/${NAME}4c-${VERSTR}-src.tgz || exit 1
+tar -xvf $CWD/${NAME}4c-${VERSTR}-src.tgz || exit 3
 cd $SRC/source
 fix_source
 
@@ -44,7 +62,7 @@ fix_source
 #  * http://www.icu-project.org/trac/ticket/7749
 #  * http://bugs.gentoo.org/285735
 # Fix also segmentation fault because of initialized pointer
-patch -p2 < $CWD/$NAME-$VERSION-pkgdata.diff
+patch -p2 < $CWD/$NAME-$VERSION-pkgdata.diff || exit 4
 
 # Configure
 CFLAGS=$SLKCFLAGS \
@@ -65,11 +83,11 @@ CXXFLAGS=$SLKCFLAGS \
             --enable-tests=no \
             --enable-samples=no \
             --disable-rpath \
-            --with-data-packaging=files || exit 1
+            --with-data-packaging=files || exit 5
 
 # Build & install
-make -j4 || exit 2
-make DESTDIR=$PKG install || exit 3
+make -j4 || exit 6
+make DESTDIR=$PKG install || exit 7
 
 # Prepare
 bin_perms $PKG
