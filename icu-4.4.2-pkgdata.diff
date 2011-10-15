@@ -1,6 +1,6 @@
-diff -N -r -U 3 icu-4.4.1-orig/source/tools/pkgdata/pkgdata.cpp icu-4.4.1/source/tools/pkgdata/pkgdata.cpp
---- icu-4.4.1-orig/source/tools/pkgdata/pkgdata.cpp	2010-04-28 18:27:46.000000000 +0300
-+++ icu-4.4.1/source/tools/pkgdata/pkgdata.cpp	2010-08-19 15:14:18.000000000 +0300
+diff -urNad icu-4.4.2-orig/source/tools/pkgdata/pkgdata.cpp icu-4.4.2/source/tools/pkgdata/pkgdata.cpp
+--- icu-4.4.2-orig/source/tools/pkgdata/pkgdata.cpp	2010-09-29 21:37:28.000000000 +0300
++++ icu-4.4.2/source/tools/pkgdata/pkgdata.cpp	2011-10-16 00:28:11.000000000 +0300
 @@ -98,6 +98,7 @@
  #endif
  
