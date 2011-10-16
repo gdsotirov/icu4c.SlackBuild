@@ -19,13 +19,13 @@
 #
 # Visit SlackPack at http://sotirov-bg.net/slackpack/
 #
-# $Id: icu4c.SlackBuild,v 1.8 2011/10/16 07:15:54 gsotirov Exp $
+# $Id: icu4c.SlackBuild,v 1.9 2011/10/16 08:35:28 gsotirov Exp $
 #
 
 . ../../slack-package.conf
 
 NAME=icu
-VERSION=4.4.2
+VERSION=4.6
 VERSTR=${VERSION//./_}
 BUILD=${BUILD:-1}
 
@@ -56,13 +56,7 @@ cd $SRC/source
 fix_source
 
 # Apply patches
-# Fix segmentation fault from buffer overflow in pkgdata. See:
-#  * http://www.icu-project.org/trac/ticket/7663
-#  * http://www.icu-project.org/trac/ticket/7680
-#  * http://www.icu-project.org/trac/ticket/7749
-#  * http://bugs.gentoo.org/285735
-# Fix also segmentation fault because of initialized pointer
-patch -p2 < $CWD/$NAME-$VERSION-pkgdata.diff || exit 4
+# Segmentation fault from buffer overflow in pkgdata fixed in 4.5.1
 
 # Configure
 CFLAGS=$SLKCFLAGS \
@@ -108,7 +102,6 @@ install -m 644 $CWD/slack-required $PKG/install/slack-required
 mkdir -p $PKG/usr/src/slackbuilds/$NAME-$VERSION
 install -m 644 $CWD/slack-desc                  $PKG/usr/src/slackbuilds/$NAME-$VERSION/slack-desc
 install -m 644 $CWD/slack-required              $PKG/usr/src/slackbuilds/$NAME-$VERSION/slack-required
-install -m 644 $CWD/$NAME-$VERSION-pkgdata.diff $PKG/usr/src/slackbuilds/$NAME-$VERSION/$NAME-$VERSION-pkgdata.diff
 install -m 644 $CWD/$NAME.SlackBuild            $PKG/usr/src/slackbuilds/$NAME-$VERSION/$NAME.SlackBuild
 
 # Assemble
