@@ -19,10 +19,10 @@
 #
 # Visit SlackPack at http://sotirov-bg.net/slackpack/
 #
-# $Id: icu4c.SlackBuild,v 1.7 2011/10/15 21:34:34 gsotirov Exp $
+# $Id: icu4c.SlackBuild,v 1.8 2011/10/16 07:15:54 gsotirov Exp $
 #
 
-. ../slack-package.conf
+. ../../slack-package.conf
 
 NAME=icu
 VERSION=4.4.2
@@ -71,6 +71,7 @@ CXXFLAGS=$SLKCFLAGS \
             --host=$ARCH-slackware-linux \
             --prefix=/usr \
             --sysconfdir=/etc \
+            --libdir=/usr/lib${LIBDIRSUFFIX} \
             --mandir=/usr/man \
             --enable-shared=yes \
             --enable-static=no \
@@ -110,7 +111,7 @@ install -m 644 $CWD/slack-required              $PKG/usr/src/slackbuilds/$NAME-$
 install -m 644 $CWD/$NAME-$VERSION-pkgdata.diff $PKG/usr/src/slackbuilds/$NAME-$VERSION/$NAME-$VERSION-pkgdata.diff
 install -m 644 $CWD/$NAME.SlackBuild            $PKG/usr/src/slackbuilds/$NAME-$VERSION/$NAME.SlackBuild
 
-# Pack
+# Assemble
 cd $PKG
 PKGNAME=$NAME-$VERSION-$ARCH-$BUILD$MYIN
 makepkg -l y -c n $PKG_DIR/$PKGNAME.txz
@@ -118,6 +119,7 @@ cd $PKG_DIR
 md5sum $PKGNAME.txz > $PKGNAME.txz.md5
 cat $PKG/install/slack-desc > $PKG_DIR/$PKGNAME.txt
 
+# Clean up
 if [ "$1" == "--cleanup" ]; then
   rm -r $SRC
   rm -r $PKG
