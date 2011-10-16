@@ -19,13 +19,13 @@
 #
 # Visit SlackPack at http://sotirov-bg.net/slackpack/
 #
-# $Id: icu4c.SlackBuild,v 1.9 2011/10/16 08:35:28 gsotirov Exp $
+# $Id: icu4c.SlackBuild,v 1.10 2011/10/16 08:55:37 gsotirov Exp $
 #
 
 . ../../slack-package.conf
 
 NAME=icu
-VERSION=4.6
+VERSION=4.6.1
 VERSTR=${VERSION//./_}
 BUILD=${BUILD:-1}
 
