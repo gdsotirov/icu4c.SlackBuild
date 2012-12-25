@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# Slackware build script for ICU
+# Slackware build script for ICU4C
 # Copyright (C) 2007-2012 Georgi D. Sotirov <gdsotirov@dir.bg>
 #
 # This program is free software; you can redistribute it and/or
@@ -19,13 +19,13 @@
 #
 # Visit SlackPack at http://sotirov-bg.net/slackpack/
 #
-# $Id: icu4c.SlackBuild,v 1.13 2012/08/24 06:19:12 gsotirov Exp $
+# $Id: icu4c.SlackBuild,v 1.14 2012/12/25 10:27:34 gsotirov Exp $
 #
 
 . ../../slack-package.conf
 
-NAME=icu
-VERSION=4.8.1.1
+NAME=icu4c
+VERSION=49.1.2
 VERSTR=${VERSION//./_}
 BUILD=${BUILD:-1}
 
@@ -36,7 +36,7 @@ if [ ! -e $TMP ]; then
   mkdir -p $TMP # location to build the source
 fi
 
-SRC=$TMP/$NAME
+SRC=$TMP/${NAME//4c/}
 if [ -e $SRC -a -d $SRC ]; then
   echo "Source directory '$SRC' already exists! Plaese, move it or remove it."
   exit 1
@@ -51,7 +51,7 @@ mkdir -p $PKG
 
 # Extract the source
 cd $TMP
-tar -xvf $CWD/${NAME}4c-${VERSTR}-src.tgz || exit 3
+tar -xvf $CWD/${NAME}-${VERSTR}-src.tgz || exit 3
 cd $SRC/source
 fix_source
 
@@ -64,12 +64,14 @@ CXXFLAGS=$SLKCFLAGS \
 ./configure --build=$ARCH-slackware-linux \
             --host=$ARCH-slackware-linux \
             --prefix=/usr \
-            --sysconfdir=/etc \
             --libdir=/usr/lib${LIBDIRSUFFIX} \
             --mandir=/usr/man \
+            --sysconfdir=/etc \
+            --localstatedir=/var \
             --enable-shared=yes \
             --enable-static=no \
             --enable-release \
+            --enable-strict \
             --enable-draft \
             --enable-threads \
             --enable-extras \
