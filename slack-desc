@@ -1,11 +1,11 @@
-icu: ICU (International Components for Unicode)
-icu:
-icu: ICU is a mature, widely used set of C/C++ and Java libraries providing
-icu: Unicode and Globalization support for software applications. ICU is
-icu: widely portable and gives applications the same results on all
-icu: platforms and between C/C++ and Java software.
-icu:
-icu:
-icu:
-icu: Packaged by Georgi D. Sotirov <gdsotirov@dir.bg>
-icu:
+icu4c: ICU for C (International Components for Unicode C/C++ API)
+icu4c:
+icu4c: ICU is a mature, widely used set of C/C++ and Java libraries providing
+icu4c: Unicode and Globalization support for software applications. ICU is
+icu4c: widely portable and gives applications the same results on all
+icu4c: platforms and between C/C++ and Java software.
+icu4c:
+icu4c:
+icu4c:
+icu4c:
+icu4c: Packaged by Georgi D. Sotirov <gdsotirov@dir.bg>
