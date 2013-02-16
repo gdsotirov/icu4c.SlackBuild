@@ -1,7 +1,7 @@
 #!/bin/sh
 #
 # Slackware build script for ICU4C
-# Copyright (C) 2007-2012 Georgi D. Sotirov <gdsotirov@dir.bg>
+# Copyright (C) 2007-2013 Georgi D. Sotirov <gdsotirov@dir.bg>
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -19,13 +19,13 @@
 #
 # Visit SlackPack at http://sotirov-bg.net/slackpack/
 #
-# $Id: icu4c.SlackBuild,v 1.14 2012/12/25 10:27:34 gsotirov Exp $
+# $Id: icu4c.SlackBuild,v 1.15 2013/02/16 12:51:56 gsotirov Exp $
 #
 
 . ../../slack-package.conf
 
 NAME=icu4c
-VERSION=49.1.2
+VERSION=50.1.2
 VERSTR=${VERSION//./_}
 BUILD=${BUILD:-1}
 
