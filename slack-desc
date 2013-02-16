@@ -4,8 +4,8 @@ icu4c: ICU is a mature, widely used set of C/C++ and Java libraries providing
 icu4c: Unicode and Globalization support for software applications. ICU is
 icu4c: widely portable and gives applications the same results on all
 icu4c: platforms and between C/C++ and Java software.
-icu4c:
-icu4c:
-icu4c:
+icu4c: The major changes in 50.* releases include CLDR 22.1, Unicode 6.2,
+icu4c: ordinal number support, dictionary-based break iterators for Chinese
+icu4c: and Japanese.
 icu4c:
 icu4c: Packaged by Georgi D. Sotirov <gdsotirov@dir.bg>
